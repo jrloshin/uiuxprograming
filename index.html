@@ -1,96 +1,54 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>퇴근메이트</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>퇴근메이트</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
-
 <body>
-<!--
-사용자: 업무를 정리하고 정시에 퇴근하고 싶은 직장인
-목적: 오늘 해야 할 일을 빠르게 정리하고 업무를 효율적으로 마무리하기
-핵심 행동: 오늘의 할 일을 등록하고 완료 여부 확인하기
-정보 순서: 서비스 소개 → 주요 기능 → 이용 방법 → 퇴근 소식 신청
--->
-    <header>
-        <h1>퇴근메이트</h1>
-        <p>오늘 할 일을 깔끔하게 끝내고, 마음 편하게 퇴근하자!</p>
-
-        <nav>
-            <a href="#about">서비스 소개</a>
-            <a href="#features">주요 기능</a>
-            <a href="#steps">이용 방법</a>
-            <a href="#subscribe">퇴근 소식 받기</a>
-        </nav>
-    </header>
-
-    <main>
-
-        <section id="about">
-            <h2>서비스 소개</h2>
-            <h3>오늘의 할 일을 정리하고 빠르게 퇴근하세요</h3>
-            <p>
-                퇴근메이트는 해야 할 일을 정리하고,
-                업무를 효율적으로 마무리할 수 있도록 도와주는 서비스입니다.
-            </p>
-
-            <img src="assets/images/service.jpg.png"
-                 alt="오늘의 할 일을 확인하며 퇴근을 준비하는 사용자">
-        </section>
-
-        <section id="features">
-            <h2>주요 기능</h2>
-
-            <ul>
-                <li>
-                    <h3>오늘의 할 일 정리</h3>
-                    <p>오늘 처리해야 할 업무를 한눈에 확인합니다.</p>
-                </li>
-
-                <li>
-                    <h3>우선순위 확인</h3>
-                    <p>중요한 업무부터 순서대로 확인하고 처리합니다.</p>
-                </li>
-
-                <li>
-                    <h3>퇴근 준비 확인</h3>
-                    <p>남은 업무를 확인하여 빠뜨린 일 없이 하루를 마무리합니다.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section id="steps">
-            <h2>이용 방법</h2>
-
-            <ol>
-                <li>오늘 해야 할 일을 등록합니다.</li>
-                <li>업무의 우선순위를 확인합니다.</li>
-                <li>완료한 업무를 체크하고 퇴근합니다.</li>
-            </ol>
-        </section>
-
-        <section id="subscribe">
-            <h2>퇴근 소식 받기</h2>
-
-            <form>
-                <label for="email">이메일</label>
-                <input type="email"
-                       id="email"
-                       name="email"
-                       placeholder="name@example.com">
-
-                <button type="submit">퇴근 소식 신청하기</button>
-            </form>
-        </section>
-
-    </main>
-
-    <footer>
-        <small>© 2026 퇴근메이트. 모든 권리 보유.</small>
-    </footer>
-
-</body>
-
-</html>
+<!-- 사용자: 업무를 정리하고 정시에 퇴근하고 싶은 직장인
+목표: 오늘의 할 일을 등록하고 마무리하기
+7주차 흐름: 업무 입력 → 내용 확인 → 등록 완료 → 완료 체크
+중간고사 추가: 등록된 업무를 바탕으로 퇴근 준비 점검 -->
+<header class="header"><a class="brand" href="#">퇴근메이트<span>WORK & LIFE</span></a>
+<nav aria-label="메인 메뉴"><a href="#about">서비스 소개</a><a href="#workspace">오늘의 업무</a><a href="#steps">이용 방법</a></nav></header>
+<main>
+<section class="hero" id="about">
+<div><p class="eyebrow">오늘의 마무리를 가볍게</p><h1>할 일은 정리하고,<br>퇴근은 마음 편하게.</h1><p class="intro">머릿속에만 있던 업무를 꺼내놓으세요.<br>하나씩 끝내다 보면, 어느새 퇴근 시간!</p><a class="button" href="#workspace">오늘의 업무 정리하기 →</a></div>
+<img src="assets/images/service.jpg.png" alt="오늘의 업무를 확인하며 퇴근을 준비하는 사용자">
+</section>
+<section id="workspace" class="workspace">
+<div class="section-heading"><div><p class="eyebrow">TODAY'S WORK</p><h2>오늘의 업무</h2></div><span class="tag">차근차근 하나씩</span></div>
+<div class="work-grid">
+<div class="panel">
+<ol class="progress" aria-label="업무 등록 단계"><li id="step-one" class="active">1. 업무 입력</li><li id="step-two">2. 내용 확인</li><li id="step-three">3. 등록 완료</li></ol>
+<div id="input-screen">
+<h3>어떤 일을 해야 하나요?</h3>
+<form id="task-form" novalidate>
+<label for="task-name">업무 내용 <span class="required">필수</span></label>
+<input id="task-name" name="task" type="text" maxlength="60" placeholder="예: 내일 크루 교육 일정 정리" aria-describedby="task-hint task-error">
+<p id="task-hint" class="hint">앞뒤 공백을 제외하고 2~60자로 입력해 주세요.</p>
+<label for="priority">우선순위 <span class="required">필수</span></label>
+<select id="priority" name="priority" aria-describedby="task-error"><option value="">우선순위를 선택하세요</option><option value="높음">높음 · 먼저 처리할 일</option><option value="보통">보통 · 오늘 처리할 일</option><option value="낮음">낮음 · 여유 있게 처리할 일</option></select>
+<p id="task-error" class="error" role="alert"></p>
+<button type="submit">입력 내용 확인하기</button>
+</form>
+</div>
+<div id="review-screen" hidden><h3>이 내용으로 등록할까요?</h3><dl class="review"><dt>업무 내용</dt><dd id="review-name"></dd><dt>우선순위</dt><dd id="review-priority"></dd></dl><p class="hint">수정하기를 누르면 입력한 내용을 그대로 고칠 수 있어요.</p><div class="actions"><button type="button" id="edit-task" class="secondary">수정하기</button><button type="button" id="save-task">업무 등록하기</button></div><button type="button" id="cancel-task" class="text-button">등록 취소</button></div>
+<div id="success-screen" hidden><span class="success-icon" aria-hidden="true">✓</span><h3 tabindex="-1" id="success-title">업무를 등록했어요!</h3><p id="saved-name"></p><p class="hint">오른쪽 목록에서 끝낸 업무를 체크해 주세요.</p><button type="button" id="new-task">다른 업무 등록하기</button></div>
+<p id="form-status" class="hint" role="status"></p>
+</div>
+<div class="panel task-panel"><div class="list-heading"><h3>업무 목록</h3><span id="task-count">0 / 0 완료</span></div><p class="hint">체크를 해제하면 다시 진행 중으로 바뀌어요.</p><div id="empty-list" class="empty">아직 등록한 업무가 없어요.<br>먼저 오늘 할 일을 등록해 보세요.</div><ul id="task-list" class="task-list"></ul><p id="list-status" class="hint" role="status"></p></div>
+</div>
+</section>
+<section id="check-section" class="check-section" hidden>
+<p class="eyebrow">BEFORE YOU GO</p><h2>퇴근 준비 점검</h2><p>오늘 등록한 업무가 모두 끝났는지 확인해 보세요.</p>
+<button type="button" id="start-check">퇴근 준비 점검하기 →</button>
+<div id="check-dialog" class="panel check-dialog" hidden><h3 id="check-title" tabindex="-1">퇴근 전 확인</h3><p>현재 업무 목록의 완료 상태를 확인할까요?</p><p class="hint">점검을 취소해도 등록한 업무와 완료 상태는 유지돼요.</p><div class="actions"><button type="button" id="cancel-check" class="secondary">점검 취소</button><button type="button" id="confirm-check">점검 결과 보기</button></div></div>
+<div id="check-result" class="panel check-result" hidden tabindex="-1"></div><p id="check-status" role="status" class="hint"></p>
+</section>
+<section id="steps" class="steps"><p class="eyebrow">HOW TO USE</p><h2>퇴근까지, 세 단계</h2><div class="step-cards"><article><span>01</span><h3>할 일 적기</h3><p>업무와 우선순위를 입력하고<br>등록할 내용을 확인해요.</p></article><article><span>02</span><h3>하나씩 끝내기</h3><p>끝낸 업무는 체크해서<br>진행 상황을 확인해요.</p></article><article><span>03</span><h3>마무리하기</h3><p>남은 업무를 확인하고<br>오늘 하루를 마무리해요.</p></article></div></section>
+</main><footer>퇴근메이트 · 오늘도 수고했어요.<br><small>업무는 이 화면을 사용하는 동안만 유지되며, 새로고침하면 초기화됩니다.</small></footer>
+</body></html>
